@@ -25,7 +25,7 @@
                         while($row = pg_fetch_row($result)) {
                     ?>
                     <tr>
-                        <td><?php echo $row["SerialNo"] ?></td>
+                        <td><?php echo $row["serialno"] ?></td>
                         <td><?php echo $row[1] ?></td>
                         <td><?php echo $row[2] ?></td>
                         <td><?php echo $row[3] ?></td>
