@@ -7,9 +7,9 @@
         $conn = OpenCon();
 
         $sql = "SELECT * FROM custdet";
-        $result = $conn->query($sql);
+        $result = pg_query($conn, $sql);
         
-        if ($result->num_rows > 0) {
+        if ($result) {
             // output data of each row
             ?>
             <table class="styled-table">
@@ -22,7 +22,7 @@
                 </thead>
                 <tbody>
                     <?php
-                        while($row = $result->fetch_assoc()) {
+                        while($row = pg_fetch_row($result)) {
                     ?>
                     <tr>
                         <td><?php echo $row["SerialNo"] ?></td>
