@@ -117,7 +117,6 @@ pg_close($conn);
 </table>
 <?php
 $conn = OpenCon();
-echo "Running SQL";
 $sql = "INSERT INTO transdet(PayerAccNo, PayeeAccNo, Amount) VALUES ('$payeraccno', '$payeeaccno', $amount)";
 pg_query($conn,$sql);
 pg_close($conn);
