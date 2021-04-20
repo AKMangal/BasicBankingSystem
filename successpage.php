@@ -9,7 +9,7 @@ session_start();
 $payeraccno = $_SESSION["payer"];
 $payeeaccno = $_SESSION["payee"];
 $amount = $_SESSION["amt"];
-$sql1 = "SELECT * FROM custdet WHERE AccountNo = \'$payeraccno\'";
+$sql1 = "SELECT * FROM custdet WHERE AccountNo = '$payeraccno'";
 $result1 = pg_query($conn, $sql1);
 if ($result1) {
 ?>
@@ -45,7 +45,7 @@ if ($result1) {
 } else {
     echo "0 results";
 }
-$sql = "UPDATE custdet SET CurrentBalance = $payerbal-$amount WHERE AccountNo = \'$payeraccno\'";
+$sql = "UPDATE custdet SET CurrentBalance = $payerbal-$amount WHERE AccountNo = '$payeraccno'";
 
 if (pg_query($conn, $sql) === FALSE) {
     echo "Error updating record: " . pg_last_error($conn);
@@ -53,7 +53,7 @@ if (pg_query($conn, $sql) === FALSE) {
 ?>
 
 <?php
-$sql2 = "SELECT * FROM custdet WHERE AccountNo = \'$payeeaccno\'";
+$sql2 = "SELECT * FROM custdet WHERE AccountNo = '$payeeaccno'";
 $result2 = pg_query($conn, $sql2);
 if ($result2) {
 ?>
@@ -89,7 +89,7 @@ if ($result2) {
 } else {
     echo "0 results";
 }
-$sql = "UPDATE custdet SET CurrentBalance = $payeebal+$amount WHERE AccountNo = \'$payeeaccno\'";
+$sql = "UPDATE custdet SET CurrentBalance = $payeebal+$amount WHERE AccountNo = '$payeeaccno'";
 
 if (pg_query($conn, $sql) === FALSE) {
     echo "Error updating record: " . pg_last_error($conn);
