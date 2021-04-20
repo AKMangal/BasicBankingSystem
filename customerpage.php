@@ -41,7 +41,7 @@
         else{
             echo "0 results";
         }
-        CloseCon($conn);
+        pg_close($conn);
     ?>
     
 <?php echo file_get_contents("html/footer.html"); ?>
