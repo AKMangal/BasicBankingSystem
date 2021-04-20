@@ -8,9 +8,9 @@ include 'databaseConnections/custdatabase.php';
 $conn = OpenCon();
 
 $sql = "SELECT * FROM transdet";
-$result = $conn->query($sql);
+$result = pg_query($conn, $sql);
 
-if ($result->num_rows > 0) {
+if ($result) {
     // output data of each row
 ?>
     <table class="styled-table">
@@ -23,14 +23,14 @@ if ($result->num_rows > 0) {
         </thead>
         <tbody>
             <?php
-            while ($row = $result->fetch_assoc()) {
+            while ($row = pg_fetch_row($result)) {
             ?>
                 <tr>
-                    <td><?php echo $row["Id"] ?></td>
-                    <td><?php echo $row["PayerAccNo"] ?></td>
-                    <td><?php echo $row["PayeeAccNo"] ?></td>
-                    <td><?php echo $row["Amount"] ?></td>
-                    <td><?php echo $row["Transaction"] ?></td>
+                    <td><?php echo $row[0] ?></td>
+                    <td><?php echo $row[1] ?></td>
+                    <td><?php echo $row[2] ?></td>
+                    <td><?php echo $row[3] ?></td>
+                    <td><?php echo $row[4] ?></td>
                 </tr>
             <?php
             }
@@ -41,7 +41,7 @@ if ($result->num_rows > 0) {
 } else {
     echo "0 results";
 }
-CloseCon($conn);
+pg_close($conn);
 ?>
 
 <?php echo file_get_contents("html/footer.html"); ?>

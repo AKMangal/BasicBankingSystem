@@ -41,10 +41,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $payeeaccno = $_POST["payeeaccno"];
         $amount = $_POST["amount"];
         $sql1 = "SELECT * FROM custdet WHERE AccountNo = \"$payeraccno\"";
-        $result1 = $conn->query($sql1);
-        if ($result1->num_rows > 0) {
-            $row = $result1->fetch_assoc();
-            if ($row["CurrentBalance"] >= $amount) {
+        $result1 = pg_query($conn, $sql1);
+        if ($result1) {
+            $row = pg_fetch_row($result1);
+            if ($row[4] >= $amount) {
                 $_SESSION["payer"] = $_POST["payeraccno"];
                 $_SESSION["payee"] = $_POST["payeeaccno"];
                 $_SESSION["amt"] = $_POST["amount"];
