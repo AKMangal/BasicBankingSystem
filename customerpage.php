@@ -9,7 +9,7 @@
         $sql = "SELECT * FROM custdet";
         $result = pg_query($conn, $sql);
         
-        if ($result) {
+        if (pg_num_rows($result)) {
             // output data of each row
             ?>
             <table class="styled-table">
