@@ -42,6 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $amount = $_POST["amount"];
         $sql1 = "SELECT * FROM custdet WHERE AccountNo = \'$payeraccno\'";
         $result1 = pg_query($conn, $sql1);
+        echo pg_num_rows($result1);
         if (pg_num_rows($result1) > 0) {
             $row = pg_fetch_row($result1);
             if ($row[4] >= $amount) {
