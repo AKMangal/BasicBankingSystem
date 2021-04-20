@@ -25,11 +25,11 @@
                         while($row = pg_fetch_row($result)) {
                     ?>
                     <tr>
-                        <td><?php echo $row["SerialNo"] ?></td>
-                        <td><?php echo $row["AccountNo"] ?></td>
-                        <td><?php echo $row["Name"] ?></td>
-                        <td><?php echo $row["Email"] ?></td>
-                        <td><?php echo $row["CurrentBalance"] ?></td>
+                        <td><?php echo $row["serialno"] ?></td>
+                        <td><?php echo $row["accountno"] ?></td>
+                        <td><?php echo $row["name"] ?></td>
+                        <td><?php echo $row["email"] ?></td>
+                        <td><?php echo $row["currentbalance"] ?></td>
                     </tr>
                     <?php
                         }
