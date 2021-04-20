@@ -40,10 +40,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $payeraccno = $_POST["payeraccno"];
         $payeeaccno = $_POST["payeeaccno"];
         $amount = $_POST["amount"];
-        $sql1 = "SELECT * FROM custdet WHERE AccountNo = \'$payeraccno\'";
+        $sql1 = "SELECT * FROM custdet WHERE AccountNo = '$payeraccno'";
         $result1 = pg_query($conn, $sql1);
-        echo pg_num_rows($result1);
-        if (pg_num_rows($result1) > 0) {
+        if ($result1) {
             $row = pg_fetch_row($result1);
             if ($row[4] >= $amount) {
                 $_SESSION["payer"] = $_POST["payeraccno"];
@@ -82,7 +81,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </script>
         <?php
         }
-        $sql2 = "SELECT * FROM custdet WHERE AccountNo = \'$payeeaccno\'";
+        $sql2 = "SELECT * FROM custdet WHERE AccountNo = '$payeeaccno'";
         $result2 = pg_query($conn, $sql2);
         if (pg_num_rows($result2) == 0) {
         ?>
