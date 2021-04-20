@@ -119,26 +119,25 @@ pg_close($conn);
 $conn = OpenCon();
 
 // Prepare an insert statement
+echo "Running SQL";
 $sql = "INSERT INTO transdet(PayerAccNo, PayeeAccNo, Amount) VALUES (:payeraccno, :payeeaccno, :amount)";
-if ($stmt = $this->pdo->prepare($sql)) {
-    
-    // Set parameters
-    $PayerAccNo = $payeraccno;
-    $PayeeAccNo = $payeeaccno;
-    $Amount = $amount;
+$stmt = $this->pdo->prepare($sql);
+echo "Statment formed";
+// Set parameters
+$PayerAccNo = $payeraccno;
+$PayeeAccNo = $payeeaccno;
+$Amount = $amount;
 
-    // Bind variables to the prepared statement as parameters
-    $stmt->bindValue(':payeraccno', $PayerAccNo);
-    $stmt->bindValue(':payeeaccno', $PayeeAccNo);
-    $stmt->bindValue(':amount', $Amount);
-
-    // Attempt to execute the prepared statement
-    if ($stmt->execute() === FALSE) {
-        echo "ERROR: Could not execute query: $sql. " . pg_last_error($conn);
-    }
-} else {
-    echo "ERROR: Could not prepare query: $sql. " . pg_last_error($conn);
+// Bind variables to the prepared statement as parameters
+$stmt->bindValue(':payeraccno', $PayerAccNo);
+$stmt->bindValue(':payeeaccno', $PayeeAccNo);
+$stmt->bindValue(':amount', $Amount);
+echo "Binding Successful";
+// Attempt to execute the prepared statement
+if ($stmt->execute() === FALSE) {
+    echo "ERROR: Could not execute query: $sql. " . pg_last_error($conn);
 }
+
 $stmt->close();
 pg_close($conn);
 ?>
