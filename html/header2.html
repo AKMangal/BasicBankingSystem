@@ -1,0 +1,38 @@
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="img/logo.png" type="image/png">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/tabledesign.css">
+<link rel="stylesheet" href="css/buttonsheet.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</head>
+
+<body>
+    <center>
+        <div class="header">
+            <img src="img/logo.png" alt="logo">
+            <h1>SPARKS BANK</h1>
+        </div>
+        <div class="topnav" id="myTopnav">
+            <a>SPARKS BANK</a>
+            <a href="homepage.php">Home Page</a>
+            <a href="customerpage.php">View Customer</a>
+            <a href="transferpage.php">Fund Transfer</a>
+            <a href="historypage.php">Transaction History</a>
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                <i class="fa fa-bars"></i>
+            </a>
+        </div>
+        <script>
+            function myFunction() {
+                var x = document.getElementById("myTopnav");
+                if (x.className === "topnav") {
+                    x.className += " responsive";
+                } else {
+                    x.className = "topnav";
+                }
+            }
+        </script>
