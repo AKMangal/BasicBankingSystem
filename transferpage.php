@@ -83,7 +83,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
         $sql2 = "SELECT * FROM custdet WHERE AccountNo = \'$payeeaccno\'";
         $result2 = pg_query($conn, $sql2);
-        if (!$result2) {
+        if ($result2 === FALSE) {
         ?>
             <script>
                 swal({
